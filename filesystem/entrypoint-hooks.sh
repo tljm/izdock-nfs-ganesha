@@ -155,6 +155,7 @@ LOG {
 # test 20200810
 NFS_Core_Param
 {
+    Bind_addr=0.0.0.0;
     MNT_Port = 20048;
     NLM_Port = 32803;
     fsid_device = false;

@@ -1,7 +1,7 @@
 # docker build --pull --rm --build-arg APP_DEBUG=1 --build-arg APP_VER_BUILD=1 --build-arg APP_BUILD_COMMIT=fffffff --build-arg APP_BUILD_DATE=$(date +%s) -t nfs-ganesha .
 # docker run --rm --name nfs-ganesha -v /tmp/data:/data nfs-ganesha
 
-ARG IMAGE_FROM="debian:bullseye-slim"
+ARG IMAGE_FROM="debian:12-slim"
 FROM ${IMAGE_FROM}
 
 MAINTAINER Ugo Viti <ugo.viti@initzero.it>
@@ -11,20 +11,11 @@ ENV APP_DESCRIPTION "NFS-Ganesha Userspace NFS File Server"
 
 # https://github.com/nfs-ganesha/nfs-ganesha/releases
 # default version vars
-ARG APP_VER=4.0.12
+ARG APP_VER=5.5.1
 
 # https://github.com/nfs-ganesha/ntirpc/releases
-# for ganesha 4.0.x
-ARG NTIRPC_VERSION=4.0
-
-# for ganesha 3.0.x
-#ARG NTIRPC_VERSION=3.0
-
-# for ganesha 2.8.x
-#ARG NTIRPC_VERSION=1.8.0
-
-# for ganesha 2.6.x
-#ARG NTIRPC_VERSION=1.6.3
+# for ganesha 5.?.?
+ARG NTIRPC_VERSION=5.0
 
 ## set internal variables using defined args
 ENV APP_VER             ${APP_VER}
@@ -60,7 +51,7 @@ RUN set -xe && \
     psmisc \
     dbus \
     libjemalloc2 \
-    liburcu6 \
+    liburcu8 \
     fuse \
     libcrcutil0 \
     libfuse2 \
@@ -134,7 +125,7 @@ RUN set -eux && \
     -DENABLE_VFS_POSIX_ACL=ON \
     -DENABLE_RFC_ACL=ON \
     ../src/ && \
-  make && \
+  make -j $(nproc) && \
   make install && \
   \
   cp /usr/src/nfs-ganesha-${NFS_GANESHA_VERSION}/src/scripts/ganeshactl/org.ganesha.nfsd.conf /etc/dbus-1/system.d/ && \

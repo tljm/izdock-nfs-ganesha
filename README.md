@@ -1,3 +1,5 @@
+This Docker Image is suboptimal.
+
 # Description
 NFS-Ganesha is a user-mode file server for NFS (v3, 4.0, 4.1, 4.1 pNFS, 4.2)
 
