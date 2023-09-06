@@ -11,7 +11,7 @@ ENV APP_DESCRIPTION "NFS-Ganesha Userspace NFS File Server"
 
 # https://github.com/nfs-ganesha/nfs-ganesha/releases
 # default version vars
-ARG APP_VER=5.5.1
+ARG APP_VER=5.5.2
 
 # https://github.com/nfs-ganesha/ntirpc/releases
 # for ganesha 5.?.?
