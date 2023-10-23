@@ -4,14 +4,14 @@
 ARG IMAGE_FROM="debian:12-slim"
 FROM ${IMAGE_FROM}
 
-MAINTAINER Ugo Viti <ugo.viti@initzero.it>
+MAINTAINER <tljm@wp.pl>
 
 ENV APP_NAME        "nfs-ganesha"
 ENV APP_DESCRIPTION "NFS-Ganesha Userspace NFS File Server"
 
 # https://github.com/nfs-ganesha/nfs-ganesha/releases
 # default version vars
-ARG APP_VER=5.5.2
+ARG APP_VER=5.6
 
 # https://github.com/nfs-ganesha/ntirpc/releases
 # for ganesha 5.?.?
