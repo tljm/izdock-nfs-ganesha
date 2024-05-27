@@ -11,11 +11,11 @@ ENV APP_DESCRIPTION "NFS-Ganesha Userspace NFS File Server"
 
 # https://github.com/nfs-ganesha/nfs-ganesha/releases
 # default version vars
-ARG APP_VER=5.6
+ARG APP_VER=5.9
 
 # https://github.com/nfs-ganesha/ntirpc/releases
 # for ganesha 5.?.?
-ARG NTIRPC_VERSION=5.0
+ARG NTIRPC_VERSION=5.8
 
 ## set internal variables using defined args
 ENV APP_VER             ${APP_VER}
